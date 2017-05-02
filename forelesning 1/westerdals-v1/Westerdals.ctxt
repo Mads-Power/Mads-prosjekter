@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Westerdals()
+comment1.params=student
+comment1.target=void\ addStudent(Student)
+comment2.params=employee
+comment2.target=void\ addEmployee(Employee)
+comment3.params=
+comment3.target=void\ showAll()
+numComments=4

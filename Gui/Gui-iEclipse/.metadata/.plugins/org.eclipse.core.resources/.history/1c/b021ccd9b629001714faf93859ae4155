@@ -1,0 +1,186 @@
+import javax.swing.*;
+
+import java.awt.event.*;
+import java.awt.*;
+
+import static javax.swing.JOptionPane.*;
+
+
+public class ValutaKalkulator extends JFrame implements ActionListener{
+private static final long serialVersionUID = 1L;
+	
+  JTextField nok1;
+  JTextField other1;
+  
+  JLabel nok, other;
+ 
+  
+  private JButton btnGBP;
+  private JButton btnSEK;
+  private JButton btnEUR;
+  private JButton btnUSD;
+  
+  JButton btnRnok;
+  JButton btnRother;
+  JButton btnRens;
+  JButton btnExit;
+  // 1 NOK til forskjellig valuta
+  private double GBP = 0.09;
+  private double SEK = 1.03;
+  private double EUR = 0.11;
+  private double USD = 0.10;
+  
+  
+
+  
+  
+	
+public ValutaKalkulator(){
+	setTitle("VALUTAKALKULATOR");
+	//øverste vindu
+	JPanel topW = new JPanel(new GridLayout(1, 4));
+	//midt vindu med valuta knapper'
+	JPanel middleW = new JPanel(new GridLayout(2, 2));
+	middleW.setPreferredSize(new Dimension(30,30));
+	//Rense knapper
+	JPanel cleanW = new JPanel(new GridLayout(1, 4));
+	cleanW.setPreferredSize(new Dimension(30,30));
+
+	
+
+    setVisible(true);
+    setSize(500, 200);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    //NOK og Other
+     nok = new JLabel("NOK");
+     nok1 = new  JTextField();
+    other = new JLabel("Other");
+     other1 = new  JTextField();
+    
+    topW.add(nok);
+    topW.add(nok1);
+    topW.add(other);
+    topW.add(other1);
+
+    
+    add(topW, BorderLayout.NORTH);
+    
+    //Valuta knapper
+     btnGBP = new JButton("GBP");
+    middleW.add(btnGBP);
+     btnEUR = new JButton("EUR");
+    middleW.add(btnEUR);
+     btnUSD = new JButton("USD");
+    middleW.add(btnUSD);
+     btnSEK = new JButton("SEK");
+    middleW.add(btnSEK);
+    
+    btnGBP.addActionListener(this);
+    btnEUR.addActionListener(this);
+    btnUSD.addActionListener(this);
+    btnSEK.addActionListener(this);
+    
+    
+    add(middleW, BorderLayout.CENTER);
+    
+    //Rense og avslutt knapper
+     btnRnok = new JButton("Rens NOK");
+    cleanW.add(btnRnok);
+     btnRother = new JButton("Rens Other");
+    cleanW.add(btnRother);
+     btnRens = new JButton("Rens");
+    cleanW.add(btnRens);
+     btnExit = new JButton("Avslutt");
+    cleanW.add(btnExit);
+    
+    btnRnok.addActionListener(this);
+    btnRother.addActionListener(this);
+    btnRens.addActionListener(this);
+    btnExit.addActionListener(this);
+    
+    add(cleanW, BorderLayout.SOUTH);
+	}
+
+public void popup(JTextField nok1, JTextField other1){
+	/*double nokpop = Double.parseDouble(nok1.getText());
+	double otherPop = Double.parseDouble(other1.getText());
+	Object click = event.getSource();
+	
+	if(nokpop == 0 && otherPop == 0 && click == btnGBP){
+		
+	}*/
+}
+	
+public void actionPerformed (ActionEvent event){
+	 
+	
+	//pop-up bokser
+	if(nok1.getText().equals("") && other1.getText().equals("")){
+		showMessageDialog(this, "Du må skrive inn ett beløp i NOK!");
+	}else if (!nok1.getText().equals("") && !other1.getText().equals("")){
+		showMessageDialog(this, "Du må skrive bare ett beløp!");
+	}
+	
+	//konverterer til forskjellig valuta 
+	 Object click = event.getSource();
+	 
+	 if(click ==btnGBP){
+		    double valuta = Double.parseDouble(nok1.getText());
+		    double sum = valuta * GBP;
+			other1.setText(Double.toString(sum));
+			other.setText("GBP");
+		    }
+	 
+	 else if(click == btnEUR){
+		 double valuta = Double.parseDouble(nok1.getText());
+		    
+			double sum = valuta * EUR;
+			other1.setText(Double.toString(sum));
+			other.setText("EUR");
+	 }
+	 else if (click == btnUSD){
+		 double valuta = Double.parseDouble(nok1.getText());
+		    
+			double sum = valuta * USD;
+			other1.setText(Double.toString(sum));
+			other.setText("USD");
+	 }
+	 else if(click == btnSEK){
+		 double valuta = Double.parseDouble(nok1.getText());
+		    
+			double sum = valuta * SEK;
+			other1.setText(Double.toString(sum));
+			other.setText("SEK");
+	 }
+	 //fra andre valuta il NOK
+	 else if(click == btnGBP){
+		 double valuta = Double.parseDouble(other1.getText());
+		 double sum1 = valuta / GBP;
+		 nok1.setText(Double.toString(sum1));
+		 
+		 
+		 
+	 }
+	 
+	//nedre knapper
+	 if(click == btnRnok ){
+		 nok1.setText("");
+		// other1.setText("");
+	 }if(click == btnRother){
+		 other1.setText("");
+	 }if (click == btnRens){
+		 nok1.setText(""); 
+		 other1.setText("");
+	 }else if(click == btnExit){
+		 System.exit(0);
+	 }
+	
+	 
+	}
+	public static void main(String[] args) {
+		new ValutaKalkulator();
+
+	}
+
+}

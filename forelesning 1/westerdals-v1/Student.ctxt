@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=studentNumber\ socialSecurityNumber\ firstName\ familyName\ credits
+comment0.target=Student(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
+comment1.params=firstName
+comment1.target=void\ setFirstName(java.lang.String)
+comment10.params=
+comment10.target=int\ getCredits()
+comment11.params=
+comment11.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=java.lang.String\ getFirstName()
+comment3.params=familyName
+comment3.target=void\ setFamilyName(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getFamilyName()
+comment5.params=socialSecurityNumber
+comment5.target=void\ setSocialSecurityNumber(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getSocialSecurityNumber()
+comment7.params=studentNumber
+comment7.target=void\ setStudentNumber(java.lang.String)
+comment8.params=
+comment8.target=java.lang.String\ getStudentNumber()
+comment9.params=credits
+comment9.target=void\ setCredits(int)
+numComments=12
